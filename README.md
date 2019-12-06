@@ -1,13 +1,13 @@
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rauanisanfelice/template-django .svg)
-![GitHub top language](https://img.shields.io/github/languages/top/rauanisanfelice/template-django .svg)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/rauanisanfelice/template-django .svg)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/rauanisanfelice/template-django .svg)
-![GitHub contributors](https://img.shields.io/github/contributors/rauanisanfelice/template-django .svg)
-![GitHub last commit](https://img.shields.io/github/last-commit/rauanisanfelice/template-django .svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rauanisanfelice/template-django.svg)
+![GitHub top language](https://img.shields.io/github/languages/top/rauanisanfelice/template-django.svg)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/rauanisanfelice/template-django.svg)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/rauanisanfelice/template-django.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/rauanisanfelice/template-django.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/rauanisanfelice/template-django.svg)
 
-![GitHub stars](https://img.shields.io/github/stars/rauanisanfelice/template-django .svg?style=social)
+![GitHub stars](https://img.shields.io/github/stars/rauanisanfelice/template-django.svg?style=social)
 ![GitHub followers](https://img.shields.io/github/followers/rauanisanfelice.svg?style=social)
-![GitHub forks](https://img.shields.io/github/forks/rauanisanfelice/template-django .svg?style=social)
+![GitHub forks](https://img.shields.io/github/forks/rauanisanfelice/template-django.svg?style=social)
 
 # Template django
 
