@@ -17,11 +17,15 @@ services:
             - network-postgres
 
     pgadmin:
-        image: dpage/pgadmin4
+        image: dpage/pgadmin4:4.16
         container_name: "PGADMIN"
         environment:
             PGADMIN_DEFAULT_EMAIL: "admin"
             PGADMIN_DEFAULT_PASSWORD: "admin"
+        volumes:
+            - volume-pgadmin:/pgadmin4:rw
+            - volume-pgadmin-lib:/var/lib/pgadmin:rw
+            - volume-pgadmin-certs:/certs:rw
         ports:
             - 80:80
         depends_on:
@@ -36,3 +40,6 @@ networks:
 volumes:
     volume-potgre:
     volume-postgre-data:
+    volume-pgadmin:
+    volume-pgadmin-lib:
+    volume-pgadmin-certs:
