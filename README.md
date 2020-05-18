@@ -11,36 +11,37 @@
 
 # Template django
 
-Tempalte Django 3.0
+Tempalte Django 3.0.6
 
-# Instruções
-
-1. Ambiente Python;
-2. Instalando dependências;
-3. Inicialização dos container;
+1. Virtual env;
+2. Dependências;
+3. Criando arquivo .env;
+4. Baco de dados (caso não tenha);
     1. Configurando o pgAdmin;
-4. Iniciar o servidor.
+5. Migrando conf. para o BD;
+5. Inicializando servidor;
 
-## Ambiente Python
-
+### Virtual env
 ```
 virtualenv -p python3 env
 source env/bin/activate
 ```
 
-## Instalando dependências:
-
+### Dependências
 ```
 pip3 install -r requirements.txt
 ```
 
-### Inicialização dos container
+### Criando arquivo .env
 
+Copie o conteúdo do arquivo env-example e crie um novo arquivo .env, cole o conteúdo.
+
+### Baco de dados (caso não tenha)
 ```
 docker-compose up -d
 ```
 
-#### Configurando o pgAdmin;
+#### Configurando o pgAdmin
 
 Acesse o link:
 
@@ -61,18 +62,16 @@ Name: #nome desejado#
 >User: admin  
 >Pass: docker123
 
-### Iniciar o servidor.
+
+### Migrando conf. para o BD
+```
+python manage.py migrate
+```
+
+### Inicializando servidor
 
 ```
 python manage.py runserver 8000 --noreload
 ```
 
-[Site](http://localhost:8000)
-
-
-### Novo Aplicativo.
-```
-python manage.py startapp [nome]
-```
-
-Alterar *[nome]* pelo nome do novo aplicativo.
+> http://localhost:8000/admin

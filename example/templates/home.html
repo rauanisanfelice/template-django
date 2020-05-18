@@ -1,0 +1,18 @@
+{% extends 'template.html' %}
+{% load static %}
+
+{% comment %} BLOCO DE TITULO DO SITE {% endcomment %}
+{% block title %}Início{% endblock %}
+{% block name_page %}Início{% endblock %}
+
+{% comment %} BLOCO HEAD {% endcomment %}
+{% block head %}{% endblock %}
+
+{% comment %} BLOCO DO CORPO DO HTML {% endcomment %}
+{% block body %}
+    Início
+    <a class="" title="Sair" href="{% url 'logout' %}">Sair</a>
+{% endblock %}
+
+{% comment %} BLOCO DE SCPRITS {% endcomment %}
+{% block script %}{% endblock %}
