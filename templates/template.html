@@ -1,0 +1,41 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="{% static 'img/logotipo oficial_símbolo preto.png' %}" />
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome-free-5.11.2/css/all.min.css' %}">
+
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-4.5.0-dist/css/bootstrap.css' %}">
+
+        <!-- Style -->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body>
+
+        <!-- Body -->
+        <div>
+            {% block body %}{% endblock %}
+        </div>
+
+        <!-- Scripts -->
+        <script src="{% static 'plugins/jQuery-3.4.1/jquery-3.4.1.min.js' %}"></script>
+        {% block script %}{% endblock %}
+
+    </body>
+</html>
