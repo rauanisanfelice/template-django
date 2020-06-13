@@ -9,12 +9,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$6g=h2d2h31*j&dd_+@-32d!4%!uyu6ts0@h92gmv!_^tamy&0'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
+STAGE = config('STAGE', default='prod', cast=str)
+
+ADMINS = [
+    ('Nome', 'Email'),
+]
+if STAGE=='prod':
+    ADMINS += [('Nome', 'Email'),]
+
+MANAGERS = ADMINS
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+INTERNAL_IPS = [
+    'localhost',
+    '127.0.0.1',
+]
+
+CORS_ORIGIN_ALLOW_ALL = DEBUG
 
 # Application definition
 INSTALLED_APPS = [
@@ -25,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'example',
-    'bootstrap4', # DEIXAR POR ULTIMO
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
