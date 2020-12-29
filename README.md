@@ -11,7 +11,7 @@
 
 # Template django
 
-Tempalte Django 3.0.6
+Tempalte Django 3.0.7
 
 1. Virtual env;
 2. Dependências;
