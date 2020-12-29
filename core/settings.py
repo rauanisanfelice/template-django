@@ -1,12 +1,10 @@
 import os
+import logging.config
+
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
@@ -23,7 +21,7 @@ if STAGE=='prod':
 
 MANAGERS = ADMINS
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1']
 
 INTERNAL_IPS = [
     'localhost',
@@ -76,8 +74,6 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -86,13 +82,14 @@ DATABASES = {
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASS'),
+        'TEST': {
+            'NAME': 'defaulttests',
+        }
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -110,8 +107,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
-
 LANGUAGE_CODE = 'pt-br'
 
 TIME_ZONE = 'America/Sao_Paulo'
@@ -132,14 +127,17 @@ STATICFILES_DIRS = [
     './static/',
 ]
 
+
 #############################################################
 # LOGIN / LOGOUT
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
+
 #############################################################
 # SESSION
-SESSION_EXPIRE_AT_BROWSER_CLOSE=True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 
 #############################################################
 # E-MAIL OPTIONS
@@ -154,6 +152,7 @@ EMAIL_HOST_PASSWORD = config('DJANGO_EMAIL_PASSWORD')
 EMAIL_FROM = config('DJANGO_EMAIL_USER')
 DEFAULT_FROM_EMAIL = config('DJANGO_EMAIL_USER')
 
+
 #############################################################
 # CONFIGURAÇÕES AWS S3
 # AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
@@ -165,9 +164,10 @@ DEFAULT_FROM_EMAIL = config('DJANGO_EMAIL_USER')
 # AWS_QUERYSTRING_AUTH = False
 # AWS_S3_FILE_OVERWRITE = False
 
-import logging.config
-LOGGING_CONFIG = None
-logging.config.dictConfig({
+
+#############################################################
+# LOGGING
+LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'formatters': {
@@ -193,11 +193,12 @@ logging.config.dictConfig({
             'class': 'logging.StreamHandler',
             'filters': ['require_debug_true'],
             'formatter': 'console',
+            'level': 'INFO',
         },
         'file': {
             'level': config('LOGLEVEL'),
             'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'django.log',
+            'filename': BASE_DIR+'/logs/debug.log',
             'formatter': 'file',
             'maxBytes': 10 * 1024 * 1024, # 10MB
         },
@@ -209,18 +210,16 @@ logging.config.dictConfig({
         }
     },
     'loggers': {
-        # root logger
         '': {
-            'level': config('LOGLEVEL'),
+            'level': 'INFO',
             'handlers': ['console', 'file'],
         },
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
         },
-
         'django.db.backends': {
             'level': 'DEBUG',
         },
     },
-})
+}
