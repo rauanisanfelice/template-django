@@ -1,0 +1,30 @@
+{% extends 'template.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% comment %} BLOCO DE TITULO DO SITE {% endcomment %}
+{% block title %} - Erro{% endblock %}
+
+{% comment %} BLOCO HEAD {% endcomment %}
+{% block head %}{% endblock %}
+
+{% comment %} BLOCO DO CORPO DO HTML {% endcomment %}
+{% block body %}
+
+    {% comment %} ASSINATURA {% endcomment %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-white bg-warning mb-3" style="max-width: 100%">
+                <div class="card-header">Erro: {{error_status}}</div>
+                <div class="card-body">
+                    <p class="card-text">{{error_menssage}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% comment %} BLOCO DE SCPRITS {% endcomment %}
+{% block script %}{% endblock %}

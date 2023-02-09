@@ -1,7 +1,0 @@
-django>=3.2.5, <3.3.0
-pylint>=2.4.4, <2.5.0
-psycopg2-binary>=2.8.4, <2.9.0
-python-decouple>=3.3, <3.4
-django-bootstrap4>=1.1.1, <1.2.0
-requests>=2.23.0, <2.24.0
-gunicorn>=20.0.4, <20.1.0

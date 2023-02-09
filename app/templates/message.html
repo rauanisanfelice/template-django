@@ -1,0 +1,37 @@
+{% if messages %}
+
+    {% for message in messages %}
+
+    {% if forloop.first %}
+        {% if message.level == 10 %}
+        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        {% elif message.level == 20 %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+        {% elif message.level == 25 %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {% elif message.level == 30 %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% elif message.level == 40 %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {% else %}
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        {% endif %}
+    {% endif %}
+
+    <dd>
+        {{ message }}
+    </dd>
+    {% endfor %}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<script>
+    setTimeout(function () {
+        $(".alert").alert('close');
+    }, 4000);
+</script>
+
+{% endif %}

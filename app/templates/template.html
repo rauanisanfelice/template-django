@@ -1,0 +1,190 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Rauan Ishida Sanfelice">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <title>POC Union AirFlow{% block title %}{% endblock %}</title>
+
+    {% comment %} Bootstrap {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-4.4.1-dist/css/bootstrap.min.css' %}">
+
+    {% comment %} Font Awesome {% endcomment %}
+    <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+
+    {% comment %} Ionicons {% endcomment %}
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    {% comment %} AdminLTE {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/AdminLTE-3.1.0/css/adminlte.min.css' %}">
+
+    {% comment %} Google Font: Source Sans Pro {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/google-fonts/fonts.css' %}">
+
+    {% comment %} Style {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body class="hold-transition layout-top-nav layout-footer-fixed">
+
+    <div class="wrapper">
+
+        {% comment %} COVER {% endcomment %}
+        <div id="cover">
+            <div class="cover-fundo"></div>
+            <div class="loader">
+                <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+                    <g fill="none" fill-rule="evenodd">
+                        <g transform="translate(1 1)" stroke-width="2">
+                            <circle stroke-opacity=".2" cx="18" cy="18" r="18" />
+                            <path d="M36 18c0-9.94-8.06-18-18-18">
+                                <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18"
+                                    dur="1s" repeatCount="indefinite" />
+                            </path>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        {% comment %} Navbar {% endcomment %}
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+
+                {% comment %} FULL SCREEN {% endcomment %}
+                <li class="nav-item hide-on-mobile">
+                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                    </a>
+                </li>
+
+                {% comment %} LOGOUT {% endcomment %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-th-large"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="card-body box-profile">
+                            <h3 class="profile-username text-center">{{ request.user.get_full_name }}</h3>
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <strong>Usuário</strong> <a class="float-right">{{ request.user.username }}</a>
+                                </li>
+                            </ul>
+                            <a href="{% url 'logout' %}" class="btn btn-dark btn-block">
+                                <em class="fas fa-sign-out-alt mr-2"></em>
+                                <strong>Logout</strong>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        {% comment %} BODY {% endcomment %}
+        <div class="content-wrapper">
+
+            <!-- HEADER -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>{% block name_page %}{% endblock %}</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                {% block tree_site %}{% endblock %}
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BODY -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            {% block body %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        {% comment %} FOOTER {% endcomment %}
+        <aside class="control-sidebar control-sidebar-dark sidebar-dark-info"></aside>
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-inline-block">
+            <strong>Version</strong> {{ request.version }}
+            </div>
+        </footer>
+
+    </div>
+
+    {% comment %} Font Awesome {% endcomment %}
+    <script src="https://kit.fontawesome.com/6dd0eefd35.js" crossorigin="anonymous"></script>
+
+    {% comment %} SCRIPTS {% endcomment %}
+    <script src="{% static 'js/index.js' %}" defer></script>
+    <script src="{% static 'plugins/jQuery-3.5.1/jquery-3.5.1.min.js' %}"></script>
+
+    {% comment %} POPPER JS {% endcomment %}
+    <script src="{% static 'plugins/popperjs-1.16.0/popper.min.js' %}"></script>
+
+    {% comment %} BOOTSTRAP {% endcomment %}
+    <script src="{% static 'plugins/bootstrap-4.4.1-dist/js/bootstrap.min.js' %}"></script>
+
+    {% comment %} AdminLTE App {% endcomment %}
+    <script src="{% static 'plugins/AdminLTE-3.1.0/js/adminlte.js' %}"></script>
+
+    {% comment %} Keep alive {% endcomment %}
+    <script type="text/javascript">
+        const keepAliveTimeout = 5 * 60 * 1000;
+
+        window.addEventListener("load", function () {
+            setTimeout(keepAliveWorker, keepAliveTimeout);
+        }, false);
+
+        function keepAliveWorker() {
+            $.ajax({
+                type: "GET",
+                url: "{% url 'keepalive' %}",
+                dataType: "html",
+                success: function (resp) {
+                    console.log('Keep alive.');
+                },
+                error: function (rs, e) {
+                    console.error('ERROR')
+                    console.error(rs);
+                    console.error(e);
+                    console.error(e.message);
+                },
+                complete: function () {
+                    setTimeout(keepAliveWorker,
+                        keepAliveTimeout); // Schedule the next request when the current one's complete
+                }
+            });
+        }
+    </script>
+
+    {% block script %}{% endblock %}
+</body>
+
+</html>

@@ -11,67 +11,46 @@
 
 # Template django
 
-Tempalte Django 3.0.7
+## Instruções
 
-1. Virtual env;
-2. Dependências;
-3. Criando arquivo .env;
-4. Baco de dados (caso não tenha);
-    1. Configurando o pgAdmin;
-5. Migrando conf. para o BD;
-5. Inicializando servidor;
+1. Configurando ambiente local para desenvolvimento;
+2. Executar testes;
+3. Executar aplicação.
 
-### Virtual env
-```
-virtualenv -p python3 env
-source env/bin/activate
+### Configurando ambiente local para desenvolvimento
+
+Copiando arquivos "*.example" depois disto preeencha com as informações necessária.
+
+```shell
+make copy-example
 ```
 
-### Dependências
-```
-pip3 install -r requirements.txt
-```
+Instalando todas as dependências
 
-### Criando arquivo .env
-
-Copie o conteúdo do arquivo env-example e crie um novo arquivo .env, cole o conteúdo.
-
-### Baco de dados (caso não tenha)
-```
-docker-compose up -d
+```shell
+make install
 ```
 
-#### Configurando o pgAdmin
+### Executar testes
 
-Acesse o link:
-
-[pgAdmin](http://localhost:80)
-
-Realize o login:
->User: admin  
->Pass: admin
-
-Clique em: Create >> Server
-
-Conecte no Banco com os seguintes parametros:  
-
-Name: #nome desejado#  
->Host: postgre
->Port: 5432  
->DB  : postgres  
->User: admin  
->Pass: docker123
-
-
-### Migrando conf. para o BD
-```
-python manage.py migrate
+```shell
+make test
 ```
 
-### Inicializando servidor
+Coverage
 
-```
-python manage.py runserver 8000 --noreload
+```shell
+make coverage
 ```
 
-> http://localhost:8000/admin
+Sonar Qube
+
+```shell
+make sonar-scan
+```
+
+### Executar aplicação
+
+```shell
+make run
+```

@@ -1,0 +1,68 @@
+name: Ciclo de Gente - CI/CD, Deploy
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master ]
+
+env:
+  LANG: C.UTF-8
+  LC_ALL: C.UTF-8
+
+jobs:
+
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.8]
+
+    env:
+      AMBIENTE: GITHUB
+      SECRET_KEY: secret-key-test
+      DEBUG: True
+      LOGLEVEL: ERROR
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Create Folder and File Log
+        run: |
+          mkdir -p ./app/logs ./app/coverage/reports/
+          touch ./app/logs/debug.log
+        shell: bash
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Pip Requirements
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements/test.txt
+
+      - name: Run Migrate
+        run: |
+          cd app
+          python manage.py migrate --noinput
+
+      - name: Run Tests
+        run: |
+          cd app
+          python manage.py test --noinput --parallel
+
+      - name: Run Coverage
+        run: |
+          cd app
+          coverage run --source='.' --omit='*/core/*' manage.py test
+          coverage json --pretty-print
+
+      - name: Check Coverage
+        env:
+          COVERAGE_PERCENTUAL: "55"
+        run: |
+          python ./deploy/coverage.py
