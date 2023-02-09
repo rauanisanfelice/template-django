@@ -1,0 +1,51 @@
+{% extends 'template-login.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% comment %} BLOCO DE TITULO DO SITE {% endcomment %}
+{% block title %}Login{% endblock %}
+
+{% comment %} BLOCO HEAD {% endcomment %}
+{% block head %}
+{% endblock %}
+
+{% block card-title %}
+    {% if user.is_authenticated %}
+        Você já esta logado!
+    {% else %}
+        Realize o login
+    {% endif %}
+{% endblock %}
+
+{% comment %} BLOCO DO CORPO DO HTML {% endcomment %}
+{% block body %}
+    {% if user.is_authenticated %}
+        <div class="row justify-content-center">
+            <h1><a href="{% url 'home' %}" class="link-none">Início</a></h1>
+        </div>
+    {% else %}
+
+        {% bootstrap_form form %}
+        <br>
+
+        <div class="form-group col-12">
+            <a href="{% url 'password_reset' %}" class="link-none"><p class="font-italic text-sm-left">Esqueci minha senha.</p></a>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block body_footer %}
+    {% if not user.is_authenticated %}
+    <button class="btn btn-dark" type="submit">
+        <em class="fas fa-sign-in-alt mx-1"></em>
+        <span class="hide-on-mobile">Login</span>
+    </button>
+    {% endif %}
+{% endblock %}
+
+
+{% comment %} BLOCO DE SCPRITS {% endcomment %}
+{% block script %}
+{% endblock %}

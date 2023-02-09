@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="author" content="Rauan Ishida Sanfelice">
+        <meta name="robots" content="noindex">
+        <meta name="googlebot" content="noindex">
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <title>{% block title %}Login{% endblock %}</title>
+
+        {% comment %} Bootstrap {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plugins/bootstrap-4.4.1-dist/css/bootstrap.css' %}">
+        {% comment %} Font Awesome {% endcomment %}
+        <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
+        {% comment %} Style {% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+        {% block head %}{% endblock %}
+    </head>
+
+    <body style="background-color: rgba(0,0,0,.9);">
+        <div class="content-wrapper mt-3 pt-3">
+            <section class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <h1 class="text-white">POC Union AirFlow</h1>
+                    </div>
+                </div>
+            </section>
+            <section class="content">
+                <div class="container-fluid mt-3">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 col-10">
+                            <div class="card border-white align-middle">
+                                <form action="#" method="POST" novalidate>{% csrf_token %}
+                                    <div class="card-header">
+                                        <h5 class="card-title text-center font-weight-bold">{% block card-title %}{% endblock %}</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        {% block body %}{% endblock %}
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="d-flex justify-content-end">
+                                            {% block body_footer %}{% endblock %}
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+
+        {% comment %} SCRIPTS {% endcomment %}
+        <script src="{% static 'js/index.js' %}" defer></script>
+        <script src="{% static 'plugins/jQuery-3.5.1/jquery-3.5.1.min.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap-4.4.1-dist/js/bootstrap.min.js' %}"></script>
+
+        {% comment %} AdminLTE App {% endcomment %}
+        <script src="{% static 'plugins/AdminLTE-3.1.0/js/adminlte.js' %}"></script>
+
+        {% block script %}{% endblock %}
+    </body>
+</html>

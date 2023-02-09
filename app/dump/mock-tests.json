@@ -1,0 +1,56 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$hOpJl3cd7ne1J6gebOtgtm$dL3MMKglcPprg5q++UI/Ymh4s8YeSIzEAwN/zMsmELo=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "admin",
+            "first_name": "Rauan",
+            "last_name": "Ishida Sanfelice",
+            "email": "teste@teste.com.br",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-01-01T12:00:00.000Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$hOpJl3cd7ne1J6gebOtgtm$dL3MMKglcPprg5q++UI/Ymh4s8YeSIzEAwN/zMsmELo=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "teste.inativo",
+            "first_name": "Rauan",
+            "last_name": "Ishida Sanfelice",
+            "email": "teste@teste.com.br",
+            "is_staff": true,
+            "is_active": false,
+            "date_joined": "2021-01-01T12:00:00.000Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$260000$hOpJl3cd7ne1J6gebOtgtm$dL3MMKglcPprg5q++UI/Ymh4s8YeSIzEAwN/zMsmELo=",
+            "last_login": null,
+            "is_superuser": true,
+            "username": "teste.ativo",
+            "first_name": "Rauan",
+            "last_name": "Ishida Sanfelice",
+            "email": "teste@teste.com.br",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2021-01-01T12:00:00.000Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
